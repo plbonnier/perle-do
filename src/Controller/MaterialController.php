@@ -50,32 +50,37 @@ class MaterialController extends AbstractController
     }
     public function editMaterial(int $id): ?string
     {
-        $errors = [];
-        $materialManager = new MaterialManager();
-        $material = $materialManager->selectOneById($id);
+        if (isset($_SESSION['user_id'])) {
+            $errors = [];
+            $materialManager = new MaterialManager();
+            $material = $materialManager->selectOneById($id);
 
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            // clean $_POST data
-            $updatedMaterial = array_map('trim', $_POST);
-            // TODO validations (length, format...)
-            $errorsValidation = new ValidationMaterial();
-            $errorsValidation->formValidationMaterial($material);
-            $errors = $errorsValidation->errors;
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                // clean $_POST data
+                $updatedMaterial = array_map('trim', $_POST);
+                // TODO validations (length, format...)
+                $errorsValidation = new ValidationMaterial();
+                $errorsValidation->formValidationMaterial($material);
+                $errors = $errorsValidation->errors;
 
-            if (empty($errors)) {
-            // if validation is ok, update and redirection
-                $materialManager->updateMaterial($updatedMaterial);
+                if (empty($errors)) {
+                // if validation is ok, update and redirection
+                    $materialManager->updateMaterial($updatedMaterial);
 
-                header('Location: /materials');
+                    header('Location: /categories/');
 
-            // we are redirecting so we don't want any content rendered
-                return null;
+                // we are redirecting so we don't want any content rendered
+                    return null;
+                }
             }
-        }
-        return $this->twig->render('material/edit.html.twig', [
+            return $this->twig->render('material/edit.html.twig', [
             'material' => $material,
             'errors' => $errors
-        ]);
+            ]);
+        } else {
+            header('Location: /');
+            die();
+        }
     }
 }
