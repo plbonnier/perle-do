@@ -341,7 +341,7 @@ INSERT INTO `product` (`id`, `name`, `reference`, `price`, `description`, `origi
 (99, 'PIERRE ROULÉE UNAKITE', '0094', '4.00', 'lot de 24', NULL, 1, NULL, 8, 1),
 (100, 'PIERRE ROULÉE AGATE MARRON', '0095', '4.00', 'lot de 59', NULL, 1, NULL, 8, 13),
 (101, 'PIERRE ROULÉE QUARTZ ROSE MADAGASCAR', '0096', '7.00', 'lot de 40', NULL, 1, NULL, 8, 9),
-(102, 'PIERRE ROULÉE ANGELITE', '00997', '8.00', 'lot de 14', NULL, 1, NULL, 8, 8),
+(102, 'PIERRE ROULÉE ANGELITE', '0097', '8.00', 'lot de 14', NULL, 1, NULL, 8, 8),
 (103, 'PIERRE ROULÉE TOURMALINE NOIR', '0098', '6.00', 'lot de 35', NULL, 1, NULL, 8, 10),
 (104, 'PIERRE ROULÉE TOURMALINE NOIR', '0099', '7.00', 'lot de 12', NULL, 1, NULL, 8, 10),
 (105, 'PIERRE ROULÉE LAPIS LAZULI', '0100', '10.00', 'lot de 2', NULL, 1, NULL, 8, 11),
