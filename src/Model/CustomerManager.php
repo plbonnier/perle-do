@@ -72,7 +72,7 @@ class CustomerManager extends AbstractManager
     public function update(array $customer): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `civility` = :civility, 
-        `lastname` = :lastname, `firstname` = :firstname, `reference` = :reference, 
+        `lastname` = :lastname, `firstname` = :firstname,
         `adress` = :adress,`zipcode` = :zipcode,`city` = :city, `phone` = :phone, 
         `email` = :email,`description` = :description, `id_type` = :id_type
         WHERE id=:id");
@@ -80,7 +80,6 @@ class CustomerManager extends AbstractManager
         $statement->bindValue('civility', $customer['civility'], PDO::PARAM_STR);
         $statement->bindValue('lastname', $customer['lastname'], PDO::PARAM_STR);
         $statement->bindValue('firstname', $customer['firstname'], PDO::PARAM_STR);
-        $statement->bindValue('reference', $customer['reference'], PDO::PARAM_STR);
         $statement->bindValue('adress', $customer['adress'], PDO::PARAM_STR);
         $statement->bindValue('zipcode', $customer['zipcode'], PDO::PARAM_INT);
         $statement->bindValue('city', $customer['city'], PDO::PARAM_STR);
