@@ -34,6 +34,10 @@ class CustomerManager extends AbstractManager
      */
     public function insert(array $customer): int
     {
+        $lastCustomerNumber = $this->getLastCustomerNumber();
+
+        // Incrémenter le numéro de facture
+                $newCustomerNumber = $lastCustomerNumber + 1;
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`civility`, `lastname`, 
         `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `created_date`, 
         `id_type`) 
@@ -42,7 +46,7 @@ class CustomerManager extends AbstractManager
         $statement->bindValue(':civility', $customer['civility'], PDO::PARAM_STR);
         $statement->bindValue(':lastname', $customer['lastname'], PDO::PARAM_STR);
         $statement->bindValue(':firstname', $customer['firstname'], PDO::PARAM_STR);
-        $statement->bindValue(':reference', $customer['reference'], PDO::PARAM_STR);
+        $statement->bindValue(':reference', $newCustomerNumber, PDO::PARAM_INT);
         $statement->bindValue(':adress', $customer['adress'], PDO::PARAM_STR);
         $statement->bindValue(':zipcode', $customer['zipcode'], PDO::PARAM_INT);
         $statement->bindValue(':city', $customer['city'], PDO::PARAM_STR);
@@ -56,6 +60,12 @@ class CustomerManager extends AbstractManager
         return (int)$this->pdo->lastInsertId();
     }
 
+    private function getLastCustomerNumber()
+    {
+        $query = "SELECT MAX(`reference`) AS last_reference_number FROM " . self::TABLE;
+        $result = $this->pdo->query($query)->fetch(PDO::FETCH_ASSOC);
+        return $result['last_reference_number'] ?? 0;
+    }
     /**
      * Update item in database
      */
