@@ -23,12 +23,6 @@ class ValidationProduct
 
     public function formValidationProduct2(array $product): void
     {
-        if (empty($product['reference'])) {
-            $this->errors[] = "La référence du produit est obligatoire";
-        }
-        if (strlen($product['reference']) > 10) {
-            $this->errors[] = "La référence est trop longue";
-        }
         if (empty($product['price'])) {
             $this->errors[] = "Le prix est obligatoire";
         }
