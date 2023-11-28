@@ -591,9 +591,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `lastname`, `name`, `pseudo`, `password`, `role_id`) VALUES
-(1, 'GUIOT', 'Romain', 'Jackal', '$2y$10$pdL8Mct2AwApY04aDlsYt.IFriY.WfTbif1zgpDlV/wjfd/3EccyC', 1),
-(4, 'BONNIER', 'Pierre-Louis', 'plb', '$2y$10$5itlGNcicK3l560yylSYcupE2dAvwcvlsHqGxMWmols.DAHwraE3K', 1),
-(5, 'RASA', 'Nicky', 'Nicky', '$2y$10$JHWUqej0KkDMdlyL/G8L1.cQuZp9X/d0qcc3S2oLLIBELxZniXR6q', 1);
+(1, 'BONNIER', 'Pierre-Louis', 'plb', '$2y$10$5itlGNcicK3l560yylSYcupE2dAvwcvlsHqGxMWmols.DAHwraE3K', 1);
 
 -- --------------------------------------------------------
 
