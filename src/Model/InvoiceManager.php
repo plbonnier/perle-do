@@ -73,7 +73,7 @@ class InvoiceManager extends AbstractManager
     {
         $query = "SELECT MAX(`num_invoice`) AS last_invoice_number FROM " . self::TABLE;
         $result = $this->pdo->query($query)->fetch(PDO::FETCH_ASSOC);
-        return $result['last_invoice_number'] ?? 75;
+        return $result['last_invoice_number'] ?? 79;
     }
 
     public function addInvoiceProduct($productId, $quantity, $invoiceId)
