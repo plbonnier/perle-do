@@ -6,7 +6,7 @@
 		<img src="/assets/images/logo2.png" alt="logo de perle do" class="img-invoice">
 		<h2>Facture n°
 			F{{ invoice.numInvoice }}</h2>
-		<p>{{ invoice.date|format_date('full', locale='fr') }}</p>
+		<p>{{ invoice.date|date('d/m/Y') }}</p>
 	</div>
 
 	<div class="container-name-invoice">
@@ -59,7 +59,7 @@
 	<div class="container-name-invoice">
 		<div class="container-society">
 			<p>Echéance :
-				{{ invoice.date|format_date('medium', locale='fr') }}</p>
+				{{ invoice.date|date('d/m/Y') }}</p>
 			<p>Règlement :
 				{{ invoice.paymentName }}</p>
 		</div>
