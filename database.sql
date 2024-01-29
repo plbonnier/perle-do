@@ -673,7 +673,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id`, `lastname`, `name`, `pseudo`, `password`, `role_id`) VALUES
-(1, 'BONNIER', 'Pierre-Louis', 'plb', '$2y$10$5itlGNcicK3l560yylSYcupE2dAvwcvlsHqGxMWmols.DAHwraE3K', 1);
+(1, 'BONNIER', 'Pierre-Louis', 'plb', '$2y$10$GPQXZTxzx.tVDxrAgeHf7uiAGJBNIoVWrZ24rIlAGxNl3iO/3bkjC', 1);
 
 -- --------------------------------------------------------
 
