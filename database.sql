@@ -95,6 +95,22 @@ CREATE TABLE IF NOT EXISTS `customer` (
   KEY `id_type` (`id_type`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+INSERT INTO `customer` (`id`, `created_date`, `civility`, `lastname`, `firstname`, `reference`, `adress`, `zipcode`, `city`, `phone`, `email`, `description`, `id_type`) VALUES
+(1, '2024-01-29', 'Madame', 'WANG', 'Peibei', 1, NULL, 69340, 'FRANCHEVILLE', NULL, NULL, '', 6),
+(2, '2024-01-29', NULL, 'Client particulier', '', 2, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, '2024-01-29', NULL, 'DO', 'Nhu Ngoc', 3, NULL, 69160, 'TASSIN LA DEMI-LUNE', NULL, NULL, 'patron', 5),
+(4, '2024-01-29', 'Madame', 'JOURDAN', 'Charlotte', 4, NULL, NULL, NULL, NULL, NULL, 'Shiva', 2),
+(5, '2024-01-29', 'Madame', '', 'Sylvie', 5, NULL, NULL, NULL, NULL, NULL, NULL, 6),
+(6, '2024-01-29', 'Monsieur et Madame', 'LACROUX', '', 6, NULL, NULL, NULL, NULL, NULL, NULL, 5),
+(7, '2024-01-29', NULL, 'Client particulier', '', 7, NULL, NULL, NULL, NULL, NULL, 'carte de fidélité', 7),
+(8, '2024-01-29', 'Madame', 'POPESCU', 'Andrea', 8, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(9, '2024-01-29', 'Madame', 'PETIT', 'Isabelle', 9, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(10, '2024-01-29', NULL, 'Famille', '', 10, NULL, NULL, NULL, NULL, NULL, NULL, 5),
+(11, '2024-01-29', 'Monsieur', 'MERLIN', '', 11, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(12, '2024-01-29', NULL, 'Commerçant de Tassin', '', 12, NULL, NULL, NULL, NULL, NULL, NULL, 2),
+(13, '2024-01-29', 'Madame', '', 'NAIMA', 13, NULL, NULL, NULL, NULL, NULL, NULL, 2),
+(14, '2024-01-29', NULL, '', 'Hsin Yi', 14, NULL, NULL, NULL, NULL, NULL, NULL, 6);
+
 -- --------------------------------------------------------
 
 --
