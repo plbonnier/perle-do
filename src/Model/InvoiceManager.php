@@ -58,7 +58,7 @@ class InvoiceManager extends AbstractManager
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`num_invoice`, `date`,`total`,`discount`,
         `payment_type_id`,`id_customer`) 
         VALUES (:num_invoice, :date, :total, :discount, :payment_type_id, :id_customer)");
-        $statement->bindValue('num_invoice', $newInvoiceNumber, PDO::PARAM_STR);
+        $statement->bindValue('num_invoice', $newInvoiceNumber, PDO::PARAM_INT);
         $statement->bindValue('date', date("Y-m-d"), PDO::PARAM_STR);
         $statement->bindValue('total', $invoice['total'], PDO::PARAM_INT);
         $statement->bindValue('discount', $invoice['discount']);
@@ -73,7 +73,7 @@ class InvoiceManager extends AbstractManager
     {
         $query = "SELECT MAX(`num_invoice`) AS last_invoice_number FROM " . self::TABLE;
         $result = $this->pdo->query($query)->fetch(PDO::FETCH_ASSOC);
-        return $result['last_invoice_number'] ?? 1;
+        return $result['last_invoice_number'] ?? 257;
     }
 
     public function addInvoiceProduct($productId, $quantity, $invoiceId)

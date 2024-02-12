@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class ="category-block block-page">
-    <h3 class="product">{{ customer.firstname }} {{ customer.lastname }} - {{ customer.reference}}</h3>
+    <h3 class="product">{{ customer.firstname }} {{ customer.lastname }} - C{{ customer.reference}}</h3>
     <article class=show-customer>
         <p>Adresse :</p>
         <p>{{ customer.adress }}</p>
@@ -21,7 +21,7 @@
         
         {% for invoice in invoices %}
         <a href="/invoices/show?id={{ invoice.invoiceId }}" role="button" class='customer-show-invoice'>
-        fac n°{{ invoice.num_invoice }} / {{ invoice.date|format_date('medium', locale='fr') }}
+        fac n°{{ invoice.num_invoice }} / {{ invoice.date|date('d/m/Y') }}
         </a>
         {% endfor %}
         

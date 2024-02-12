@@ -25,12 +25,17 @@ class ProductManager extends AbstractManager
 
     public function insertProduct(array $product): int
     {
+        $lastProductNumber = $this->getLastProductNumber();
+
+        // Incrémenter la reference du produit
+                $newProductNumber = $lastProductNumber + 1;
+
         $statement = $this->pdo->prepare("INSERT INTO " . self::TABLE . " (`name`, `reference`, 
         `price`, `description`, `origin`, `quantity`, `picture`, `id_category`, `id_material`) 
         VALUES (:name, :reference, :price, :description, :origin, :quantity, :picture, :id_category, 
         :id_material)");
         $statement->bindValue(':name', $product['name'], PDO::PARAM_STR);
-        $statement->bindValue(':reference', $product['reference'], PDO::PARAM_STR);
+        $statement->bindValue(':reference', $newProductNumber, PDO::PARAM_INT);
         $statement->bindValue(':price', $product['price'], PDO::PARAM_INT);
         $statement->bindValue(':description', $product['description'], PDO::PARAM_STR);
         $statement->bindValue(':origin', $product['origin'], PDO::PARAM_STR);
@@ -41,6 +46,13 @@ class ProductManager extends AbstractManager
 
         $statement->execute();
         return (int)$this->pdo->lastInsertId();
+    }
+
+    private function getLastProductNumber()
+    {
+        $query = "SELECT MAX(`reference`) AS last_product_number FROM " . self::TABLE;
+        $result = $this->pdo->query($query)->fetch(PDO::FETCH_ASSOC);
+        return $result['last_product_number'] ?? 0;
     }
 
     public function getProductById(int $id): array|false
@@ -59,12 +71,11 @@ class ProductManager extends AbstractManager
     public function update(array $product): bool
     {
         $statement = $this->pdo->prepare("UPDATE " . self::TABLE . " SET `name` = :name, 
-        `reference` = :reference, `price` = :price, `description` = :description,`origin` = :origin, 
+        `price` = :price, `description` = :description,`origin` = :origin, 
         `quantity` = :quantity, `picture` = :picture,`id_category` = :id_category, `id_material` = :id_material
         WHERE id=:id");
         $statement->bindValue('id', $product['id'], PDO::PARAM_INT);
         $statement->bindValue('name', $product['name'], PDO::PARAM_STR);
-        $statement->bindValue('reference', $product['reference'], PDO::PARAM_STR);
         $statement->bindValue('price', $product['price'], PDO::PARAM_INT);
         $statement->bindValue('description', $product['description'], PDO::PARAM_STR);
         $statement->bindValue('origin', $product['origin'], PDO::PARAM_STR);

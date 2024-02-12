@@ -11,7 +11,6 @@ class MaterialController extends AbstractController
     {
         $materialManager = new MaterialManager();
         $materials = $materialManager->getAllMaterial($categoryId);
-
         if (isset($_SESSION['user_id']) === true) {
             return $this->twig->render('Material/index.html.twig', [
                 'materials' => $materials,
@@ -26,18 +25,14 @@ class MaterialController extends AbstractController
     {
         if (isset($_SESSION['user_id']) === true) {
             $errors = [];
-
             if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $material = array_map('trim', $_POST);
-
                 $errorsValidation = new ValidationMaterial();
                 $errorsValidation->formValidationMaterial($material);
                 $errors = $errorsValidation->errors;
-
                 if (empty($errors)) {
                     $materialManager = new MaterialManager();
                     $material = $materialManager->addMaterial($material);
-
                     header('Location:/materials/add');
                     return null;
                 }
@@ -53,8 +48,6 @@ class MaterialController extends AbstractController
         $errors = [];
         $materialManager = new MaterialManager();
         $material = $materialManager->selectOneById($id);
-
-
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // clean $_POST data
             $updatedMaterial = array_map('trim', $_POST);
@@ -62,13 +55,10 @@ class MaterialController extends AbstractController
             $errorsValidation = new ValidationMaterial();
             $errorsValidation->formValidationMaterial($material);
             $errors = $errorsValidation->errors;
-
             if (empty($errors)) {
             // if validation is ok, update and redirection
                 $materialManager->updateMaterial($updatedMaterial);
-
                 header('Location: /materials');
-
             // we are redirecting so we don't want any content rendered
                 return null;
             }
