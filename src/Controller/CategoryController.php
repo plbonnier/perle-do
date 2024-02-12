@@ -102,7 +102,7 @@ class CategoryController extends AbstractController
                     return null;
                 }
             }
-            return $this->twig->render('category/edit.html.twig', [
+            return $this->twig->render('Category/edit.html.twig', [
                 'category' => $category,
                 'errors' => $errors
             ]);

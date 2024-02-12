@@ -50,7 +50,7 @@ class CustomerController extends AbstractController
             }
             $typeManager = new TypeManager();
             $types = $typeManager->selectAll('type');
-            return $this->twig->render('customer/add.html.twig', [
+            return $this->twig->render('Customer/add.html.twig', [
                 'types' => $types,
                 'errors' => $errors
             ]);
@@ -70,7 +70,7 @@ class CustomerController extends AbstractController
             $invoiceManager = new InvoiceManager();
             $invoices = $invoiceManager->getAllInvoicesByCustomer($id);
 
-            return $this->twig->render('customer/show.html.twig', [
+            return $this->twig->render('Customer/show.html.twig', [
                 'customer' => $customer,
                 'type' => $type,
                 'invoices' => $invoices,
@@ -124,7 +124,7 @@ class CustomerController extends AbstractController
             }
             $typeManager = new TypeManager();
             $types = $typeManager->selectAll('type');
-            return $this->twig->render('customer/edit.html.twig', [
+            return $this->twig->render('Customer/edit.html.twig', [
                 'customer' => $customer,
                 'types' => $types,
                 'errors' => $errors
