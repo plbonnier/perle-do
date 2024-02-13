@@ -12,7 +12,9 @@ composer install \
     --prefer-dist \
     --quiet
 
-php /var/www/migration.php
+if [ ${APP_ENV} != "prod" ]; then
+  php /var/www/migration.php
+fi
 
 
 php-fpm -D
