@@ -14,7 +14,8 @@ class MaterialManager extends AbstractManager
             c.name categoryName FROM material as m
                 JOIN product as p ON m.id = p.id_material
                 JOIN category as c ON c.id = p.id_category
-                WHERE c.id=:categoryId";
+                WHERE c.id=:categoryId
+                ORDER BY m.name";
 
             $query = $this->pdo->prepare($sql);
             $query->bindValue('categoryId', $categoryId, PDO::PARAM_INT);
