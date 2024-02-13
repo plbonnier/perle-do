@@ -42,7 +42,7 @@ class MaterialController extends AbstractController
                     return null;
                 }
             }
-            return $this->twig->render('material/add.html.twig', ['errors' => $errors,]);
+            return $this->twig->render('Material/add.html.twig', ['errors' => $errors,]);
         } else {
             header('Location: /');
             die();
@@ -74,7 +74,7 @@ class MaterialController extends AbstractController
                     return null;
                 }
             }
-            return $this->twig->render('material/edit.html.twig', [
+            return $this->twig->render('Material/edit.html.twig', [
             'material' => $material,
             'errors' => $errors
             ]);
