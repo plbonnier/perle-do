@@ -56,7 +56,7 @@ class ProductController extends AbstractController
             $categorys = $categoryManager->selectAll('name');
             $materialManager = new MaterialManager();
             $materials = $materialManager->selectAll('name');
-            return $this->twig->render('product/add.html.twig', [
+            return $this->twig->render('Product/add.html.twig', [
                 'categorys' => $categorys,
                 'materials' => $materials,
                 'errors' => $errors
@@ -77,7 +77,7 @@ class ProductController extends AbstractController
             $materialManager = new MaterialManager();
             $material = $materialManager->selectOneById($id);
 
-            return $this->twig->render('product/show.html.twig', [
+            return $this->twig->render('Product/show.html.twig', [
                 'product' => $product,
                 'category' => $category,
                 'material' => $material,
@@ -132,7 +132,7 @@ class ProductController extends AbstractController
             $materialManager = new MaterialManager();
             $materials = $materialManager->selectAll('name');
 
-            return $this->twig->render('product/edit.html.twig', [
+            return $this->twig->render('Product/edit.html.twig', [
                 'product' => $product,
                 'categorys' => $categories,
                 'materials' => $materials,
